@@ -1,0 +1,6 @@
+D:\Git\HmsAPI\HmsAPI.Dto\bin\Debug\HmsAPI.Dto.dll
+D:\Git\HmsAPI\HmsAPI.Dto\bin\Debug\HmsAPI.Dto.pdb
+D:\Git\HmsAPI\HmsAPI.Dto\obj\Debug\HmsAPI.Dto.csprojAssemblyReference.cache
+D:\Git\HmsAPI\HmsAPI.Dto\obj\Debug\HmsAPI.Dto.csproj.CoreCompileInputs.cache
+D:\Git\HmsAPI\HmsAPI.Dto\obj\Debug\HmsAPI.Dto.dll
+D:\Git\HmsAPI\HmsAPI.Dto\obj\Debug\HmsAPI.Dto.pdb
