@@ -16,12 +16,16 @@ namespace HmsAPI.DataAccess
 
         }
 
-        public Roles GetRolesByID(int RoleID)
+        public Roles GetRolesByID(int roleID)
         {
-            var session = FluentNHibernateHelper.OpenSession();
-            var objRole = session.Query<Roles>().Where(x => x.RoleID == RoleID).FirstOrDefault();
-            return objRole;
-
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                using (var session = sessionWrapper.Session)
+                {
+                    var objRole = session.Query<Roles>().Where(x => x.RoleID == roleID).FirstOrDefault();
+                    return objRole;
+                }
+            }
         }
     }
 }

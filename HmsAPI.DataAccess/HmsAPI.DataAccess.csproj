@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FluentNHibernateHelper.cs" />
+    <Compile Include="HibernateFactoryProvider.cs" />
     <Compile Include="Interface\IAppointmentRepository.cs" />
     <Compile Include="Interface\IDoctorCalendarRepository.cs" />
     <Compile Include="Interface\IDoctorRepository.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="Repository\PatientMedicineRepository.cs" />
     <Compile Include="Repository\RolesRepository.cs" />
     <Compile Include="Repository\UserTableRepository.cs" />
+    <Compile Include="SessionWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

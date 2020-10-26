@@ -15,11 +15,16 @@ namespace HmsAPI.DataAccess
             Delete(objDoctorCalendar);
         }
 
-        public DoctorCalendar GetDoctorCalendarByID(int DoctorCalendarID)
+        public DoctorCalendar GetDoctorCalendarByID(int doctorCalendarID)
         {
-            var session = FluentNHibernateHelper.OpenSession();
-            var objDoctorCalendar = session.Query<DoctorCalendar>().Where(x => x.DoctorCalendarID == DoctorCalendarID).FirstOrDefault();
-            return objDoctorCalendar;
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                using (var session = sessionWrapper.Session)
+                {
+                    var objDoctorCalendar = session.Query<DoctorCalendar>().Where(x => x.DoctorCalendarID == doctorCalendarID).FirstOrDefault();
+                    return objDoctorCalendar;
+                }
+            }
         }
     }
 }

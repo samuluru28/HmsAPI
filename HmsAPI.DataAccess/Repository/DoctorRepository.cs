@@ -15,11 +15,17 @@ namespace HmsAPI.DataAccess
             Delete(objDoctor);
         }
 
-        public Doctor GetDoctorByID(int DoctorID)
+        public Doctor GetDoctorByID(int doctorID)
         {
-            var session = FluentNHibernateHelper.OpenSession();
-            var objDoctor = session.Query<Doctor>().Where(x => x.DoctorID == DoctorID).FirstOrDefault();
-            return objDoctor;
+
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                using (var session = sessionWrapper.Session)
+                {
+                    var objDoctor = session.Query<Doctor>().Where(x => x.DoctorID == doctorID).FirstOrDefault();
+                    return objDoctor;
+                }
+            }
         }
     }
 }

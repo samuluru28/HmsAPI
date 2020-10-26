@@ -16,12 +16,16 @@ namespace HmsAPI.DataAccess
           
         }
 
-        public UserTable GetUsersByID(int UserID)
+        public UserTable GetUsersByID(int userID)
         {
-            var session = FluentNHibernateHelper.OpenSession();
-            var objUser = session.Query<UserTable>().Where(x => x.UserID == UserID).FirstOrDefault();
-            return objUser;
-
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                using (var session = sessionWrapper.Session)
+                {
+                    var objUser = session.Query<UserTable>().Where(x => x.UserID == userID).FirstOrDefault();
+                    return objUser;
+                }
+            }
         }
     }
 }

@@ -23,24 +23,7 @@ namespace HmsAPI
             );
 
             appBuilder.UseWebApi(config);
-            SwaggerConfig.Register(config);
-            var session = FluentNHibernateHelper.OpenSession();
-            var roles = session.Query<Roles>().ToList();
-            var loginHistory = session.Query<LoginHistory>().ToList();
-            var doctor = session.Query<Doctor>().ToList();
-            var doctorCalendar = session.Query<DoctorCalendar>().ToList();
-            var appointment = session.Query<Appointment>().ToList();
-            var patientMedicine = session.Query<PatientMedicine>().ToList();
-
-            //Roles obj = new Roles() { Name = "Test" };
-            //session.SaveOrUpdate(obj);
-            //var transaction = session.BeginTransaction();
-            //var x= session.Get<Roles>(4);
-
-            //session.Delete(x);
-
-            //transaction.Commit();
-
+            SwaggerConfig.Register(config);           
         }
     }
 }

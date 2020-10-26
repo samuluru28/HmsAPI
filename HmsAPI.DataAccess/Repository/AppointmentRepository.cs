@@ -11,22 +11,21 @@ namespace HmsAPI.DataAccess
     {
         public void DeleteAppointment(int AppointmentID)
         {
-            try
-            {
+           
                 var objAppointment = GetAppointmentByID(AppointmentID);
                 Delete(objAppointment);
-            }
-            catch(Exception ex)
-            {
-                RollbackTransaction();
-            }
         }
 
         public Appointment GetAppointmentByID(int AppointmentID)
         {
-            var session = FluentNHibernateHelper.OpenSession();
-            var objAppointment = session.Query<Appointment>().Where(x => x.AppointmentID == AppointmentID).FirstOrDefault();
-            return objAppointment;
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                using(var session = sessionWrapper.Session)
+                {
+                    var objAppointment = session.Query<Appointment>().Where(x => x.AppointmentID == AppointmentID).FirstOrDefault();
+                    return objAppointment;
+                }
+            }               
         }
     }
 }

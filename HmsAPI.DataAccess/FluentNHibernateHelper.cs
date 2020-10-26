@@ -9,28 +9,10 @@ using System.Linq;
 
 namespace HmsAPI.DataAccess
 {
-    public class FluentNHibernateHelper : IDisposable
+    public class FluentNHibernateHelper
     {
 
-        private ISession _session;
-        public ISession Session
-        {
-            get
-            {
-                if (Session == null)
-                {
-                    var SessionFactory = GetSessionFactory();
 
-                    Session = SessionFactory.OpenSession();
-                }
-
-                return _session;
-            }
-            private set 
-            {
-                _session = value;
-            }
-        }
         public readonly string connectionString;
         public FluentNHibernateHelper()
         {
@@ -38,12 +20,9 @@ namespace HmsAPI.DataAccess
 
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
 
-        private ISessionFactory GetSessionFactory()
+
+        public ISessionFactory GetSessionFactory()
         {
             ISessionFactory sessionFactory = Fluently.Configure()
 
@@ -66,11 +45,6 @@ namespace HmsAPI.DataAccess
                .BuildSessionFactory();
 
             return sessionFactory;
-        }
-
-        public void Open()
-        {           
-            
         }
 
 

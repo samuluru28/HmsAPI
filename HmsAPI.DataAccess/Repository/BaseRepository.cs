@@ -10,58 +10,46 @@ namespace HmsAPI.DataAccess
 {
     public class BaseRepository<T> where T : class
     {
-        protected ISession _session = null;
-        protected ITransaction _transaction = null;
-        public BaseRepository()
-        {
-            _session = FluentNHibernateHelper.OpenSession();
-        }
-        public BaseRepository(ISession session)
-        {
-            _session = session;
-        }
+
         public T SaveorUpdate(T obj)
         {
-           // var session = FluentNHibernateHelper.OpenSession();
-            var transaction = _session.BeginTransaction();
-            _session.SaveOrUpdate(obj);
-            transaction.Commit();
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                sessionWrapper.BeginTransaction();
+                using (var session = sessionWrapper.Session)
+                {
+                    session.SaveOrUpdate(obj);
+                    sessionWrapper.Commit();
+                }
+            }
             return obj;
         }
 
         public IEnumerable<T> GetAll()
         {
-            var session = FluentNHibernateHelper.OpenSession();
-            var results = session.QueryOver<T>().List();
-            return results;
 
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                using (var session = sessionWrapper.Session)
+                {
+                    var results = session.QueryOver<T>().List();
+                    return results;
+                }
+            }
         }
 
         public void Delete(T obj)
         {
-            var session = FluentNHibernateHelper.OpenSession();
-            var transaction = session.BeginTransaction();
-            session.Delete(obj);
-            transaction.Commit();
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                sessionWrapper.BeginTransaction();
+                using (var session = sessionWrapper.Session)
+                {
+                    session.Delete(obj);
+                    sessionWrapper.Commit();
+                }
+            }
 
-        }
-
-        public void RollbackTransaction()
-        {
-            _transaction.Rollback();
-            CloseTransaction();
-            CloseSession();
-        }
-        private void CloseTransaction()
-        {
-            _transaction.Dispose();
-            _transaction = null;
-        }
-        private void CloseSession()
-        {
-            _session.Close();
-            _session.Dispose();
-            _session = null;
         }
     }
 }
