@@ -27,5 +27,19 @@ namespace HmsAPI.DataAccess
                 }
             }
         }
+
+        public UserTable ValidateUser(string userName,string password)
+        {
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                using (var session = sessionWrapper.Session)
+                {
+                    var objUser = session.Query<UserTable>().Where(x => x.UserName == userName && x.Password == password) .FirstOrDefault();
+                    return objUser;
+                }
+            }
+
+
+        }
     }
 }

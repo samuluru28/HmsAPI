@@ -16,6 +16,8 @@ namespace HmsAPI.DataAccess
 
         void DeleteUser(int USerID);
 
+        UserTable ValidateUser(string userName, string password);
+
 
 
     }

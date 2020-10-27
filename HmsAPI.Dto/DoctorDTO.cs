@@ -13,6 +13,6 @@ namespace HmsAPI.Dto
         public string Specialist { get; set; }
         public char Active { get; set; }
         public int VerifiedBy { get; set; }
-        public int USerID { get; set; }
+        public int UserID { get; set; }
     }
 }
