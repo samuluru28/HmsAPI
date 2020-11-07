@@ -12,32 +12,32 @@ namespace HmsAPI
 {
     static class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
 
-            HostFactory.Run(x => {
-                x.Service<RestService>(s => {
+            HostFactory.Run(x =>
+            {
+                x.Service<RestService>(s =>
+                {
                     s.ConstructUsing(() => new RestService());
-                    s.WhenStarted(rs => rs.Start());
-                    s.WhenStopped(rs => rs.Stop());
-                    s.WhenShutdown(rs => rs.Stop());
+                    s.WhenStarted(rs => rs.Start("http://localhost:9001"));
+                    s.WhenStopped(rs => rs.Stop());                   
                 });
                 x.RunAsLocalSystem();
-                x.StartAutomatically();
+               // x.StartAutomatically();
                 x.SetServiceName("WebAPiTest");
                 x.SetDisplayName("WebAPiTest");
                 x.SetDescription("Sample WebAPi");
             });
-
-            
         }
 
         public class RestService
         {
             private IDisposable appDisposable;
-            public void Start()
+            public void Start(string url)
             {
-                appDisposable = WebApp.Start<Startup>("http://localhost:8085");
+                appDisposable = WebApp.Start<Startup>(url);
+                Console.WriteLine("Service started under http://localhost:9001");
             }
 
             public void Stop()
@@ -48,22 +48,8 @@ namespace HmsAPI
                 }
             }
         }
-        //string baseAddress = "http://localhost:9000/";
-        //    using (WebApp.Start<Startup>(url: baseAddress))
-        //    {
-        //        HttpClient client = new HttpClient();
-
-        //        var response = client.GetAsync(baseAddress + "api/home").Result;
-
-        //        Console.WriteLine(response);
-        //        Console.WriteLine(response.Content.ReadAsStringAsync().Result);
-        //        Console.ReadLine();
-        //    }
-
-
-
     }
-    }
+}
 
     
 

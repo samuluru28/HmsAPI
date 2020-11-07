@@ -26,8 +26,7 @@ namespace HmsAPI.Controllers
         /// <param name="userDTO"></param>
         /// <returns></returns>
         [Route("Register")]
-        [HttpPost]
-        // [Route("Register")]
+        [HttpPost]       
         public IHttpActionResult Register([FromBody] UserDTO userDTO)
         {
             if (userDTO == null)

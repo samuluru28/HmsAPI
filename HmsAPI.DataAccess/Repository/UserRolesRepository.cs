@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HmsAPI.DataAccess.Repository
 {
-    public class UserRolesRepository:BaseRepository<UserRoles>,IUserRoleRepository
+    public class UserRoleRepository:BaseRepository<UserRoles>,IUserRoleRepository
     {
         public void DeleteUserRole(int userRoleID)
         {

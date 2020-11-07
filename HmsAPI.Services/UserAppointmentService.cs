@@ -12,13 +12,13 @@ namespace HmsAPI.Services
 {
     public class UserAppointmentService
     {
-        public readonly IUserTableRepository _userTableRepository;
+        public readonly IUserRepository _userTableRepository;
         public readonly IAppointmentRepository _appointmentRepository;
         public readonly IHospitalRepository _hospitalRepository;
         
       
 
-        public UserAppointmentService(IUserTableRepository userTableRepository, IAppointmentRepository appointmentRepository, IHospitalRepository hospitalRepository)
+        public UserAppointmentService(IUserRepository userTableRepository, IAppointmentRepository appointmentRepository, IHospitalRepository hospitalRepository)
         {
             _userTableRepository = userTableRepository;
             _appointmentRepository = appointmentRepository;

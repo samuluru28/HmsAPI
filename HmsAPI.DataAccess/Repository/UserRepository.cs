@@ -1,13 +1,9 @@
 ﻿using HmsAPI.Model;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HmsAPI.DataAccess
 {
-    public class UserRepository : BaseRepository<User>, IUserTableRepository
+    public class UserRepository : BaseRepository<User>, IUserRepository
     {
         public void DeleteUser(int UserID)
         {

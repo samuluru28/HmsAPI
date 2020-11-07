@@ -15,10 +15,10 @@ namespace HmsAPI.Services
     public class UserService: IUserService
     {
         private ILog log = LogManager.GetLogger(typeof(UserService));
-        public readonly IUserTableRepository _userTableRepository;
+        public readonly IUserRepository _userTableRepository;
         public readonly IUserRoleRepository _userRoleRepository;
 
-        public UserService(IUserTableRepository userTableRepository,IUserRoleRepository userRoleRepository)
+        public UserService(IUserRepository userTableRepository,IUserRoleRepository userRoleRepository)
         {
             _userTableRepository = userTableRepository;
             _userRoleRepository = userRoleRepository;

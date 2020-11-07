@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http.Dependencies;
-
+using Unity;
 
 namespace HmsAPI
 {
@@ -18,7 +18,6 @@ namespace HmsAPI
                 throw new ArgumentNullException("Container shouldnot be null");             
 
              container = unityContainer;
-
 
         }
         public IDependencyScope BeginScope()

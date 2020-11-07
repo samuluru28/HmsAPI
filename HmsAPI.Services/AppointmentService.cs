@@ -15,8 +15,8 @@ namespace HmsAPI.Services
     {
         private ILog log = LogManager.GetLogger(typeof(AppointmentService));
         public readonly IAppointmentRepository _appointmentRepository;
-        public readonly IUserTableRepository _userTableRepository;
-        public AppointmentService(IAppointmentRepository appointmentRepository, IUserTableRepository userTableRepository)
+        public readonly IUserRepository _userTableRepository;
+        public AppointmentService(IAppointmentRepository appointmentRepository, IUserRepository userTableRepository)
         {
             _appointmentRepository = appointmentRepository;
             _userTableRepository = userTableRepository;

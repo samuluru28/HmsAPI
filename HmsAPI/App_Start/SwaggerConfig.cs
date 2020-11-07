@@ -5,8 +5,6 @@ using Swashbuckle.Application;
 
 using System.Linq;
 
-[assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
-
 namespace HmsAPI
 {
     public class SwaggerConfig
@@ -14,8 +12,7 @@ namespace HmsAPI
         public static void Register(HttpConfiguration httpConfiguration)
         {
             httpConfiguration.EnableSwagger(c => {
-                c.SingleApiVersion("v1", "Name.APi");
-                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+                c.SingleApiVersion("v2", "HMS.APi");                
             }).EnableSwaggerUi(c => { });
         }
     }

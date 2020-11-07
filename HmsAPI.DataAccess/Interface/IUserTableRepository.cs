@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HmsAPI.DataAccess
 {
-    public interface IUserTableRepository
+    public interface IUserRepository
     {
         User SaveorUpdate(User obj);
         IEnumerable<User> GetAll();
