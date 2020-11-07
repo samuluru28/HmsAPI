@@ -9,14 +9,15 @@ namespace HmsAPI.DataAccess
 {
     public interface IUserTableRepository
     {
-        UserTable SaveorUpdate(UserTable obj);
-        IEnumerable<UserTable> GetAll();
+        User SaveorUpdate(User obj);
+        IEnumerable<User> GetAll();
 
-        UserTable GetUsersByID(int UserID);
+        User GetUsersByID(int UserID);
 
         void DeleteUser(int USerID);
 
-        UserTable ValidateUser(string userName, string password);
+        User ValidateUser(string userName, string password);
+        User GetUsersByDoctorID(int doctorID);
 
 
 

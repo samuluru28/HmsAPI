@@ -1,7 +1,9 @@
 ﻿using HmsAPI.DataAccess;
+using HmsAPI.DataAccess.Interface;
 using HmsAPI.Dto;
 using HmsAPI.Model;
 using HmsAPI.Services.Interfaces;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,61 +14,101 @@ namespace HmsAPI.Services
 {
     public class UserService: IUserService
     {
+        private ILog log = LogManager.GetLogger(typeof(UserService));
         public readonly IUserTableRepository _userTableRepository;
-        public UserService(IUserTableRepository userTableRepository)
+        public readonly IUserRoleRepository _userRoleRepository;
+
+        public UserService(IUserTableRepository userTableRepository,IUserRoleRepository userRoleRepository)
         {
             _userTableRepository = userTableRepository;
+            _userRoleRepository = userRoleRepository;
 
         }
 
-        public UserTableDTO Register(UserTableDTO obj)
+        public UserDTO Register(UserDTO obj)
         {
-            var objUser = ConvertTOModel(obj);
-            var results = _userTableRepository.SaveorUpdate(objUser);
-            return ConvertTODTO(results);
+            try
+            {
+                var objUser = ConvertTOModel(obj);
+                var results = _userTableRepository.SaveorUpdate(objUser);
+                log.Info("User Added/Modified Successfully");
+                return ConvertTODTO(results);
+            }
+            catch(Exception ex)
+            {
+                log.ErrorFormat("Exception occured while Registering new User Ex:{0}", ex.Message);
+                return null;
+            }
 
         }
 
         public UserInformationDTO ValidateUser(string userName, string password)
         {
-            var results = _userTableRepository.ValidateUser(userName, password);
-            if(results!=null)
+            try
             {
-                var userInformation = new UserInformationDTO
+                var results = _userTableRepository.ValidateUser(userName, password);
+                if (results != null)
                 {
-                    UserID = results.UserID,
-                    RoleID = results.RoleID,
-                    Name = results.FirstName + " " + results.LastName
-                };
-                return userInformation;
+                    var objUserRole = _userRoleRepository.GetUserRolesByuserID(results.UserID);
+                    var userInformation = new UserInformationDTO
+                    {
+                        UserID = results.UserID,
+                        RoleID = objUserRole.RoleID,
+                        Name = results.FirstName + " " + results.LastName
+                    };
+                    log.Info("User Validated Successfully");
+                    return userInformation;
+                }
+                return null;
             }
-            return null;
+            catch(Exception ex)
+            {
+                log.ErrorFormat("Exception occured while Validating the User Ex:{0}", ex.Message);
+                return null;
+            }
         }
 
-        public UserTableDTO GetUserByID(int userID)
+        public UserDTO GetUserByID(int userID)
         {
-            var user = _userTableRepository.GetUsersByID(userID);
+            try
+            {
+                var user = _userTableRepository.GetUsersByID(userID);
 
-            return ConvertTODTO(user);
+                return ConvertTODTO(user);
+            }
+            catch(Exception ex)
+            {
+                log.ErrorFormat("Exception occured while retreiving User Details Ex:{0}", ex.Message);
+                return null;
+
+            }
             
         }
 
-        public IEnumerable<UserTableDTO> GetAllUsers()
+        public List<UserDTO> GetAllUsers()
         {
-            List<UserTableDTO> userTableDTOList = new List<UserTableDTO>();
-            IEnumerable<UserTable> user = _userTableRepository.GetAll();
-            foreach(var item in user)
+            try
             {
-               var userDTO = ConvertTODTO(item);
-                userTableDTOList.Add(userDTO);
+                List<UserDTO> userTableDTOList = new List<UserDTO>();
+                IEnumerable<User> user = _userTableRepository.GetAll();
+                foreach (var item in user)
+                {
+                    var userDTO = ConvertTODTO(item);
+                    userTableDTOList.Add(userDTO);
 
+                }
+                return userTableDTOList;
             }
-            return userTableDTOList;
+            catch(Exception ex)
+            {
+                log.ErrorFormat("Exception occured while retreiving List of all Users Ex:{0}", ex.Message);
+                return null;
+            }
         }
-        private UserTable ConvertTOModel(UserTableDTO obj)
+        private User ConvertTOModel(UserDTO obj)
         {
 
-            var User = new UserTable()
+            var User = new User()
             {
                 UserID = obj.UserID,
                 FirstName = obj.FirstName,
@@ -75,17 +117,16 @@ namespace HmsAPI.Services
                 Gender = obj.Gender,
                 UserName = obj.UserName,
                 EmailID = obj.EmailID,
-                PhoneNumber = obj.PhoneNumber,
-                RoleID= obj.RoleID,
+                PhoneNumber = obj.PhoneNumber                
 
             };
             return User;
         }
 
-        private UserTableDTO ConvertTODTO(UserTable obj)
+        private UserDTO ConvertTODTO(User obj)
         {
 
-            var UserDTO = new UserTableDTO()
+            var UserDTO = new UserDTO()
             {
                 UserID = obj.UserID,
                 FirstName = obj.FirstName,
@@ -94,8 +135,7 @@ namespace HmsAPI.Services
                 Gender = obj.Gender,
                 UserName = obj.UserName,
                 EmailID = obj.EmailID,
-                PhoneNumber = obj.PhoneNumber,
-                RoleID = obj.RoleID,
+                PhoneNumber = obj.PhoneNumber                
 
             };
             return UserDTO;

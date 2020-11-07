@@ -13,6 +13,7 @@ namespace HmsAPI.Model
         public virtual DateTime Date { get; set; }
         public virtual DateTime StartTime { get; set; }
         public virtual DateTime EndTime { get; set; }
+        public virtual int  HospitalID { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -21,17 +22,19 @@ namespace HmsAPI.Model
                    DoctorID == calendar.DoctorID &&
                    Date == calendar.Date &&
                    StartTime == calendar.StartTime &&
-                   EndTime == calendar.EndTime;
+                   EndTime == calendar.EndTime &&
+                   HospitalID == calendar.HospitalID;
         }
 
         public override int GetHashCode()
         {
-            int hashCode = -1084626414;
+            int hashCode = 292862208;
             hashCode = hashCode * -1521134295 + DoctorCalendarID.GetHashCode();
             hashCode = hashCode * -1521134295 + DoctorID.GetHashCode();
             hashCode = hashCode * -1521134295 + Date.GetHashCode();
             hashCode = hashCode * -1521134295 + StartTime.GetHashCode();
             hashCode = hashCode * -1521134295 + EndTime.GetHashCode();
+            hashCode = hashCode * -1521134295 + HospitalID.GetHashCode();
             return hashCode;
         }
     }

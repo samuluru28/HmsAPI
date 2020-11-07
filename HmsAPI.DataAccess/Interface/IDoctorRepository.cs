@@ -15,5 +15,7 @@ namespace HmsAPI.DataAccess
         Doctor GetDoctorByID(int DoctorID);
 
         void DeleteDoctor(int DoctorID);
+        List<Doctor> GetDoctorsByHospitalID(int hospitalID);
+        List<Doctor> GetDoctorsBySpecialization(string specialist);
     }
 }

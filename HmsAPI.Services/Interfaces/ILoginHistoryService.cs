@@ -13,6 +13,6 @@ namespace HmsAPI.Services.Interfaces
 
         LoginHistoryDTO GetLoginHistoryByID(int loginHistoryID);
 
-        IEnumerable<LoginHistoryDTO> GetAllHistory();
+        List<LoginHistoryDTO> GetAllHistory();
     }
 }

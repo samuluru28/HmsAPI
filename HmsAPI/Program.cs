@@ -28,6 +28,8 @@ namespace HmsAPI
                 x.SetDisplayName("WebAPiTest");
                 x.SetDescription("Sample WebAPi");
             });
+
+            
         }
 
         public class RestService

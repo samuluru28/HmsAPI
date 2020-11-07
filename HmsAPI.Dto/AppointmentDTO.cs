@@ -11,6 +11,7 @@ namespace HmsAPI.Dto
         public int AppointmentID { get; set; }
         public int UserID { get; set; }
         public int DoctorID { get; set; }
+        public DateTime AppDate { get; set; }
         public int DoctorCalendarID { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }

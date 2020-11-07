@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace HmsAPI.Model
 {
-    public  class UserTable
+    public  class User
     {
-        public virtual  int UserID { get; set; }
-        public virtual string FirstName { get; set; }
-        public virtual string LastName { get; set; }
-        public virtual DateTime DOB { get; set; }
-        public virtual char Gender { get; set; }
-        public virtual string UserName { get; set; }
-        public virtual string Password { get; set; }
+        public   int UserID { get; set; }
+        public  string FirstName { get; set; }
+        public  string LastName { get; set; }
+        public  DateTime DOB { get; set; }
+        public  char Gender { get; set; }
+        public  string UserName { get; set; }
+        public  string Password { get; set; }
 
-        public virtual string EmailID { get; set; }
+        public  string EmailID { get; set; }
 
-        public virtual string PhoneNumber { get; set; }
-        public virtual int RoleID { get; set; }
+        public  string PhoneNumber { get; set; }
+        
 
         public override bool Equals(object obj)
         {
-            return obj is UserTable table &&
+            return obj is User table &&
                    UserID == table.UserID &&
                    FirstName == table.FirstName &&
                    LastName == table.LastName &&
@@ -32,8 +32,7 @@ namespace HmsAPI.Model
                    UserName == table.UserName &&
                    Password == table.Password &&
                    EmailID == table.EmailID &&
-                   PhoneNumber == table.PhoneNumber &&
-                   RoleID == table.RoleID;
+                   PhoneNumber == table.PhoneNumber;
         }
 
         public override int GetHashCode()
@@ -47,8 +46,7 @@ namespace HmsAPI.Model
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(UserName);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Password);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(EmailID);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(PhoneNumber);
-            hashCode = hashCode * -1521134295 + RoleID.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(PhoneNumber);            
             return hashCode;
         }
     }

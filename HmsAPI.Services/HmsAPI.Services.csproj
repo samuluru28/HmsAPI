@@ -31,8 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,17 +49,21 @@
     <Compile Include="AppointmentService.cs" />
     <Compile Include="DoctorCalendarService.cs" />
     <Compile Include="DoctorService.cs" />
+    <Compile Include="HospitalService.cs" />
     <Compile Include="Interfaces\IAppointmentService.cs" />
     <Compile Include="Interfaces\IDoctorCalendarService.cs" />
     <Compile Include="Interfaces\IDoctorService.cs" />
+    <Compile Include="Interfaces\IHospitalService.cs" />
     <Compile Include="Interfaces\ILoginHistoryService.cs" />
     <Compile Include="Interfaces\IPatientMedicineService.cs" />
     <Compile Include="Interfaces\IRoleService.cs" />
+    <Compile Include="Interfaces\IUserAppointmentService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="LoginHistoryService.cs" />
     <Compile Include="PatientMedicineService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolesService.cs" />
+    <Compile Include="UserAppointmentService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +79,9 @@
       <Project>{A68780C1-2263-4599-94D3-B00D1399B3E0}</Project>
       <Name>HmsAPI.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,12 +9,12 @@ namespace HmsAPI.Services.Interfaces
 {
     public interface IUserService
     {
-        UserTableDTO Register(UserTableDTO obj);
+        UserDTO Register(UserDTO obj);
         UserInformationDTO ValidateUser(string userName, string password);
 
-        UserTableDTO GetUserByID(int userID);
+        UserDTO GetUserByID(int userID);
 
-        IEnumerable<UserTableDTO> GetAllUsers();
+        List<UserDTO> GetAllUsers();
        
         
     }

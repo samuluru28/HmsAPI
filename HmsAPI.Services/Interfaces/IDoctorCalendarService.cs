@@ -13,6 +13,6 @@ namespace HmsAPI.Services.Interfaces
 
         DoctorCalendarDTO GetDoctorCalendarByID(int doctorCalendarID);
 
-        IEnumerable<DoctorCalendarDTO> GetAllDoctorsCalendar();
+        List<DoctorCalendarDTO> GetAllDoctorsCalendar();
     }
 }

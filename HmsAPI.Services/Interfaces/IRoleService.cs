@@ -13,7 +13,7 @@ namespace HmsAPI.Services.Interfaces
 
         RolesDTO GetRolesByID(int roleID);
 
-        IEnumerable<RolesDTO> GetAllRoles();
+        List<RolesDTO> GetAllRoles();
 
     }
 }

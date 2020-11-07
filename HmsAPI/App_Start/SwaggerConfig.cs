@@ -3,6 +3,8 @@ using WebActivatorEx;
 using HmsAPI;
 using Swashbuckle.Application;
 
+using System.Linq;
+
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
 namespace HmsAPI
@@ -13,6 +15,7 @@ namespace HmsAPI
         {
             httpConfiguration.EnableSwagger(c => {
                 c.SingleApiVersion("v1", "Name.APi");
+                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
             }).EnableSwaggerUi(c => { });
         }
     }

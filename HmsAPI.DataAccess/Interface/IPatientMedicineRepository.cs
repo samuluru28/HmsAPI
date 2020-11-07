@@ -15,5 +15,7 @@ namespace HmsAPI.DataAccess
         PatientMedicine GetMedicineByID(int PatientMedicineID);
 
         void DeleteMedicine(int PatientMedicineID);
+        PatientMedicine GetMedicinesByAppointmnetID(int appointmentID);
+        List<PatientMedicine> GetMedicinesByUserID(int userID);
     }
 }

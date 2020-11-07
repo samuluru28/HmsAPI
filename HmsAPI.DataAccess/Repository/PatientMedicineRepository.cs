@@ -1,4 +1,5 @@
-﻿using HmsAPI.Model;
+﻿using HmsAPI.Dto;
+using HmsAPI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,34 @@ namespace HmsAPI.DataAccess
         {
             var objMedicine = GetMedicineByID(PatientMedicineID);
             Delete(objMedicine);
+        }
+
+        public PatientMedicine GetMedicinesByAppointmnetID(int appointmentID)
+        {
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                using (var session = sessionWrapper.Session)
+                {
+                    var results = session.Query<PatientMedicine>().Where(x => x.AppointmentID == appointmentID).FirstOrDefault();                   
+                    return results;
+                }
+
+            }
+
+        }
+
+        public List<PatientMedicine> GetMedicinesByUserID(int userID)
+        {
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                using (var session = sessionWrapper.Session)
+                {
+                    var results = session.Query<PatientMedicine>().Where(x => x.UserID == userID).ToList();                   
+                    return results;
+                }
+
+            }
+
         }
 
     }

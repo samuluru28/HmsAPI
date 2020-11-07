@@ -8,9 +8,9 @@ namespace HmsAPI.Model
 {
     public  class PatientMedicine
     {
-        public virtual int PatientMedicineID { get; set; }
-        public virtual int UserID { get; set; }
-        public virtual string MedicineDescription { get; set; }
-        public virtual int AppointmentID { get; set; }
+        public  int PatientMedicineID { get; set; }
+        public  int UserID { get; set; }
+        public  string MedicineDescription { get; set; }
+        public  int AppointmentID { get; set; }
     }
 }

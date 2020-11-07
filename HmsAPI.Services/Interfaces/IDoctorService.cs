@@ -13,6 +13,9 @@ namespace HmsAPI.Services.Interfaces
 
         DoctorDTO GetDoctorsByID(int doctorID);
 
-        IEnumerable<DoctorDTO> GetAllDoctors();
+        List<DoctorDTO> GetAllDoctors();
+        List<DoctorDTO> GetDoctorsByHospitalID(int hospitalID);
+        List<DoctorDTO> GetDoctorsByspecialization(string specialist);
+        List<DoctorAvailabilityDTO> GetDoctorAvailability(int doctorID, DateTime date, int hospitalID);
     }
 }

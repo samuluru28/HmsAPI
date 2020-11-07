@@ -14,6 +14,8 @@ namespace HmsAPI.Services.Interfaces
 
         PatientMedicineDTO GetMedicineByID(int patientMedicineID);
 
-        IEnumerable<PatientMedicineDTO> GetAllMedicines();
+        List<PatientMedicineDTO> GetAllMedicines();
+        PatientMedicineDTO GetMedicinesByAppointmnetID(int appointmentID);
+        List<PatientMedicineDTO> GetMedicinesByUserID(int userID);
     }
 }

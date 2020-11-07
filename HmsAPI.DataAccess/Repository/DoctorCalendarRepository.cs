@@ -26,5 +26,19 @@ namespace HmsAPI.DataAccess
                 }
             }
         }
+
+        public List<DoctorCalendar> GetDoctorCalendar(int doctorID, DateTime date, int hospitalID)
+        {
+            using (SessionWrapper sessionWrapper = new SessionWrapper())
+            {
+                using (var session = sessionWrapper.Session)
+                {
+                    var results = session.Query<DoctorCalendar>().Where(x => x.DoctorID == doctorID && x.Date == date && x.HospitalID == hospitalID).ToList();
+                    return results;
+                }
+            }
+
+        }
+
     }
 }

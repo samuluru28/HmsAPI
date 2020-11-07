@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HmsAPI.Model.Mapping
 {
-    public class UserTableMapping: ClassMap<UserTable>
+    public class UserTableMapping: ClassMap<User>
     {
         public UserTableMapping()
         {
@@ -19,8 +19,7 @@ namespace HmsAPI.Model.Mapping
             Map(x => x.Gender, "Gender");
             Map(x => x.EmailID, "EmailID");
             Map(x => x.Password, "Password");
-            Map(x => x.PhoneNumber, "PhoneNumber");
-            Map(x => x.RoleID, "RoleID").CustomType<int>();
+            Map(x => x.PhoneNumber, "PhoneNumber");           
         }
     }
 }

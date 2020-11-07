@@ -15,6 +15,7 @@ namespace HmsAPI.DataAccess
         DoctorCalendar GetDoctorCalendarByID(int DoctorCalendarID);
 
         void DeleteDoctorCalendar(int DoctorCalendarID);
+        List<DoctorCalendar> GetDoctorCalendar(int doctorID, DateTime date, int hospitalID);
 
     }
 }

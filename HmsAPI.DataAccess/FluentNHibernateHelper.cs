@@ -5,6 +5,7 @@ using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 
 namespace HmsAPI.DataAccess
@@ -16,7 +17,7 @@ namespace HmsAPI.DataAccess
         public readonly string connectionString;
         public FluentNHibernateHelper()
         {
-            connectionString = "Server = DESKTOP-IIGBN65; Database = HMS; Trusted_Connection = True";
+            connectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ToString();
 
         }
 
@@ -36,7 +37,7 @@ namespace HmsAPI.DataAccess
 
                          m.FluentMappings
 
-                             .AddFromAssemblyOf<UserTable>())
+                             .AddFromAssemblyOf<User>())
 
                .ExposeConfiguration(cfg => new SchemaExport(cfg)
 

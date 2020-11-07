@@ -8,8 +8,8 @@ namespace HmsAPI.Model
 {
     public class Roles
     {
-        public virtual int RoleID { get; set; }
-        public virtual string Name { get; set; }
+        public  int RoleID { get; set; }
+        public  string Name { get; set; }
 
         public override bool Equals(object obj)
         {

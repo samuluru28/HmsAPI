@@ -13,6 +13,7 @@ namespace HmsAPI.Services.Interfaces
 
         AppointmentDTO GetAppointmentByID(int appointmentID);
 
-        IEnumerable<AppointmentDTO> GetAllAppointments();
+        List<AppointmentDTO> GetAllAppointments();
+        List<DoctorAppointmentDTO> GetDoctorAppointmentByDate(int doctorID, DateTime date);
     }
 }

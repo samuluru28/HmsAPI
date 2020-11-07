@@ -4,6 +4,7 @@ using HmsAPI.Model;
 using HmsAPI.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using log4net;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace HmsAPI.Services
 {
     public class RolesService : IRoleService
     {
+        private ILog log = LogManager.GetLogger(typeof(RolesService));
+
         public readonly IRolesRepository _roleRepository;
         public RolesService(IRolesRepository rolesRepository)
         {
@@ -21,29 +24,57 @@ namespace HmsAPI.Services
 
         public RolesDTO AddRoles(RolesDTO obj)
         {
-            var objRole = ConvertTOModel(obj);
-            var role = _roleRepository.SaveorUpdate(objRole);
-            return ConvertTODTO(role);
+            try
+            {
+                var objRole = ConvertTOModel(obj);
+                var role = _roleRepository.SaveorUpdate(objRole);
+                log.Info("Role Added Successfully");
+                return ConvertTODTO(role);
+            }
+            catch(Exception ex)
+            {
+                log.ErrorFormat("Exception occured while Adding new Role Ex:{0}", ex.Message);
+                return null;
+
+            }
         }
 
         public RolesDTO GetRolesByID(int roleID)
         {
-            var role = _roleRepository.GetRolesByID(roleID);
-
-            return ConvertTODTO(role);
-        }
-
-        public IEnumerable<RolesDTO> GetAllRoles()
-        {
-            List<RolesDTO> rolesDTOList = new List<RolesDTO>();
-            IEnumerable<Roles> roles = _roleRepository.GetAll();
-            foreach (var role in roles)
+            try
             {
-                var roleDTO = ConvertTODTO(role);
-                rolesDTOList.Add(roleDTO);
+                var role = _roleRepository.GetRolesByID(roleID);
+                return ConvertTODTO(role);
+            }
+            catch (Exception ex)
+            {
+                log.ErrorFormat("Exception occured while retrieving Role details Ex:{0}", ex.Message);
+                return null;
 
             }
-            return rolesDTOList;
+
+        }
+
+        public List<RolesDTO> GetAllRoles()
+        {
+            try
+            {
+                List<RolesDTO> rolesDTOList = new List<RolesDTO>();
+                IEnumerable<Roles> roles = _roleRepository.GetAll();
+                foreach (var role in roles)
+                {
+                    var roleDTO = ConvertTODTO(role);
+                    rolesDTOList.Add(roleDTO);
+
+                }
+                return rolesDTOList;
+            }
+            catch (Exception ex)
+            {
+                log.ErrorFormat("Exception occured while retrieving all the list of Role details Ex:{0}", ex.Message);
+                return null;
+
+            }
         }
         public Roles ConvertTOModel(RolesDTO obj)
         {
@@ -70,5 +101,5 @@ namespace HmsAPI.Services
         }
 
        
-    }
+    }                                                                                               
 }

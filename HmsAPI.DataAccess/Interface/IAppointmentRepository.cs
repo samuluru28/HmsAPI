@@ -15,5 +15,8 @@ namespace HmsAPI.DataAccess
         Appointment GetAppointmentByID(int AppointmentID);
 
         void DeleteAppointment(int AppointmentID);
+        List<Appointment> GetAppointmentByUserID(int userID);
+        List<DoctorAppointment> GetAppointments(int doctorID, DateTime date);
+        List<Appointment> GetAppointmentsByDoctorID(int doctorID, DateTime date);
     }
 }
