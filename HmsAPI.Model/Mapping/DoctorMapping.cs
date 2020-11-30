@@ -16,7 +16,7 @@ namespace HmsAPI.Model.Mapping
             Map(x => x.LicenseNumber, "LicenseNumber");
             Map(x => x.Specialist, "Specialist");
             Map(x => x.Active, "Active");
-            Map(x => x.VerifiedBy, "UserID").CustomType<int>();
+            Map(x => x.VerifiedBy, "VerifiedBy").CustomType<int>();
             Map(x => x.UserID, "UserID").CustomType<int>();
             
         }

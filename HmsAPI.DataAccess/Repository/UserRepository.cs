@@ -46,7 +46,7 @@ namespace HmsAPI.DataAccess
             {
                 using (var session = sessionWrapper.Session)
                 {
-                    var query = "select u.* from UserTable u join Doctor d on u.UserID = d.UserId where d.DoctorID =" + doctorID;
+                    var query = "select u.* from UserTable u join Doctor d on u.UserID = d.UserID where d.DoctorID =" + doctorID;
 
                     var results = session.CreateSQLQuery(query).AddEntity(typeof(User)).List<User>().FirstOrDefault();
                     return results;

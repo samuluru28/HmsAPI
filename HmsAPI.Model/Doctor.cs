@@ -28,7 +28,7 @@ namespace HmsAPI.Model
 
         public override int GetHashCode()
         {
-            int hashCode = 57109602;
+            int hashCode = 1370643586;
             hashCode = hashCode * -1521134295 + DoctorID.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LicenseNumber);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Specialist);

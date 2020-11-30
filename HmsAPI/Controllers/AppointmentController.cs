@@ -10,10 +10,18 @@ using System.Web.Http;
 
 namespace HmsAPI.Controllers
 {
+    /// <summary>
+    /// Provides functionality/Methods to the Appointment.
+    /// </summary>   
     [RoutePrefix("api/v1/appointment")]
-    public class AppointmentController: ApiController
+   
+    public class AppointmentController : ApiController
     {
         private readonly IAppointmentService _appointmentService;
+
+        /// <summary>  
+        /// Public constructor to initialize appointmentService instance  
+        /// </summary> 
         public AppointmentController(IAppointmentService appointmentService)
 
         {

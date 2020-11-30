@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HmsAPI.Services
 {
-    public class RolesService : IRoleService
+    public class RolesService : IRolesService
     {
         private ILog log = LogManager.GetLogger(typeof(RolesService));
 

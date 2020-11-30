@@ -13,5 +13,6 @@ namespace HmsAPI.Dto
         public DateTime Date { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+        public int HospitalID { get; set; }
     }
 }

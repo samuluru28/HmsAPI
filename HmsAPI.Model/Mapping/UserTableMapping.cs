@@ -17,9 +17,11 @@ namespace HmsAPI.Model.Mapping
             Map(x => x.LastName, "LastName");
             Map(x => x.DOB, "DOB");
             Map(x => x.Gender, "Gender");
+            Map(x => x.UserName, "UserName");
             Map(x => x.EmailID, "EmailID");
             Map(x => x.Password, "Password");
             Map(x => x.PhoneNumber, "PhoneNumber");           
         }
     }
 }
+

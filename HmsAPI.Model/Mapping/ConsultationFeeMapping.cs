@@ -17,8 +17,8 @@ namespace HmsAPI.Model.Mapping
             Map(x => x.HospitalID, "HospitalID").CustomType<int>();
             Map(x => x.FeeAmount, "FeeAmount");
             Map(x => x.DoctorAmount, "DoctorAmount");
-            Map(x => x.StartTime, "StartTime");
-            Map(x => x.EndTime, "StartTime");
+            Map(x => x.StartDate, "StartDate");
+            Map(x => x.EndDate, "EndDate");
 
         }
     }

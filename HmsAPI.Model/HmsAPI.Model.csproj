@@ -108,7 +108,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Appointment.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="ConsulatationFee.cs" />
     <Compile Include="Doctor.cs" />
     <Compile Include="DoctorAppointment.cs" />
@@ -122,6 +121,7 @@
     <Compile Include="Mapping\LoginHistoryMapping.cs" />
     <Compile Include="Mapping\PatientMedicineMapping.cs" />
     <Compile Include="Mapping\RolesMapping.cs" />
+    <Compile Include="Mapping\UserRolesMapping.cs" />
     <Compile Include="Mapping\UserTableMapping.cs" />
     <Compile Include="PatientMedicine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

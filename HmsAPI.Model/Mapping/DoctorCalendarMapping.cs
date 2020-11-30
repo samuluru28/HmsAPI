@@ -17,6 +17,7 @@ namespace HmsAPI.Model.Mapping
             Map(x => x.Date, "Date");
             Map(x => x.StartTime, "StartTime");
             Map(x => x.EndTime, "EndTime");
+            Map(x => x.HospitalID, "HospitalID");
         }
     }
 }

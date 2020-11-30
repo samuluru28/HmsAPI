@@ -8,36 +8,35 @@ namespace HmsAPI.Model
 {
     public  class User
     {
-        public   int UserID { get; set; }
-        public  string FirstName { get; set; }
-        public  string LastName { get; set; }
-        public  DateTime DOB { get; set; }
-        public  char Gender { get; set; }
-        public  string UserName { get; set; }
-        public  string Password { get; set; }
+        public virtual  int UserID { get; set; }
+        public virtual string FirstName { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual DateTime DOB { get; set; }
+        public virtual char Gender { get; set; }
+        public virtual string UserName { get; set; }
+        public virtual string Password { get; set; }
 
-        public  string EmailID { get; set; }
+        public virtual string EmailID { get; set; }
 
-        public  string PhoneNumber { get; set; }
-        
+        public virtual string PhoneNumber { get; set; }
 
         public override bool Equals(object obj)
         {
-            return obj is User table &&
-                   UserID == table.UserID &&
-                   FirstName == table.FirstName &&
-                   LastName == table.LastName &&
-                   DOB == table.DOB &&
-                   Gender == table.Gender &&
-                   UserName == table.UserName &&
-                   Password == table.Password &&
-                   EmailID == table.EmailID &&
-                   PhoneNumber == table.PhoneNumber;
+            return obj is User user &&
+                   UserID == user.UserID &&
+                   FirstName == user.FirstName &&
+                   LastName == user.LastName &&
+                   DOB == user.DOB &&
+                   Gender == user.Gender &&
+                   UserName == user.UserName &&
+                   Password == user.Password &&
+                   EmailID == user.EmailID &&
+                   PhoneNumber == user.PhoneNumber;
         }
 
         public override int GetHashCode()
         {
-            int hashCode = -1006295318;
+            int hashCode = 954011070;
             hashCode = hashCode * -1521134295 + UserID.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FirstName);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(LastName);
@@ -46,7 +45,7 @@ namespace HmsAPI.Model
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(UserName);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Password);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(EmailID);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(PhoneNumber);            
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(PhoneNumber);
             return hashCode;
         }
     }

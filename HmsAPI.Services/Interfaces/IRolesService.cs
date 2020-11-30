@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HmsAPI.Services.Interfaces
 {
-    public interface IRoleService
+    public interface IRolesService
     {
         RolesDTO AddRoles(RolesDTO obj);
 

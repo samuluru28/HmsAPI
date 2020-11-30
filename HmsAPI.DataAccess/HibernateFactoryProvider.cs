@@ -26,7 +26,7 @@ namespace HmsAPI.DataAccess
         {
             ISession session = null;
 
-            session = NHibernateHelper.GetSessionFactory().OpenSession();
+            session = FluentNHibernateHelper.GetSessionFactory().OpenSession();
             return session;
         }
     }

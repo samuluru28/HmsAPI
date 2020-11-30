@@ -97,7 +97,7 @@
     <Compile Include="Interfaces\IHospitalService.cs" />
     <Compile Include="Interfaces\ILoginHistoryService.cs" />
     <Compile Include="Interfaces\IPatientMedicineService.cs" />
-    <Compile Include="Interfaces\IRoleService.cs" />
+    <Compile Include="Interfaces\IRolesService.cs" />
     <Compile Include="Interfaces\IUserAppointmentService.cs" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="LoginHistoryService.cs" />

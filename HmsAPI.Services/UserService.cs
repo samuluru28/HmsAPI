@@ -116,6 +116,7 @@ namespace HmsAPI.Services
                 DOB = obj.DOB,
                 Gender = obj.Gender,
                 UserName = obj.UserName,
+                Password = obj.Password,
                 EmailID = obj.EmailID,
                 PhoneNumber = obj.PhoneNumber                
 
@@ -134,6 +135,7 @@ namespace HmsAPI.Services
                 DOB = obj.DOB,
                 Gender = obj.Gender,
                 UserName = obj.UserName,
+                Password = obj.Password,
                 EmailID = obj.EmailID,
                 PhoneNumber = obj.PhoneNumber                
 

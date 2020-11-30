@@ -8,12 +8,12 @@ namespace HmsAPI.Model
 {
     public class Hospital
     {
-        public  int HospitalID { get; set; }
-        public  string Name { get; set; }
-        public  string PhoneNumber { get; set; }
-        public  string EmailID { get; set; }
+        public virtual int HospitalID { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string PhoneNumber { get; set; }
+        public virtual string EmailID { get; set; }
 
-        public  string Address { get; set; }
+        public virtual string Address { get; set; }
 
         public override bool Equals(object obj)
         {

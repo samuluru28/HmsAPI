@@ -12,8 +12,8 @@ namespace HmsAPI.Controllers
     [RoutePrefix("api/v1/role")]
     public class RoleController: ApiController
     {
-        private readonly IRoleService _roleService;
-        public RoleController(IRoleService roleService)
+        private readonly IRolesService _roleService;
+        public RoleController(IRolesService roleService)
         {
             _roleService = roleService;
         }
